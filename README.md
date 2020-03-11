@@ -2,10 +2,10 @@
 Created sanjoy_bikehare project on 3/11/20
 
 ### Project Title
-sanjoy_bikehare
+__sanjoy_bikehare__
 
 ### Description
-The bikeshare project utilized Python to look at data related to bike share systems for three major cities in the USA - Chicago, New York City, and Washington.  In addition, the project had us compute descriptive statistics and answer other questions posed.
+_The bikeshare project utilized Python to look at data related to bike share systems for three major cities in the USA - Chicago, New York City, and Washington.  In addition, the project had us compute descriptive statistics and answer other questions posed._
 
 ### Files used
 bikeshare.py
