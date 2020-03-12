@@ -20,7 +20,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     city = input('Please select from the following cities: Chicago, New York or Washington? \n>').lower()
-        #lower is used to get input in any format\n",
+        # lower is used to get input in any format\n",
     "\n",
     while(True):
             if(city == 'chicago' or city == 'new york' or city == 'washington' or city == 'all'):
@@ -30,7 +30,7 @@ def get_filters():
                  #lower is used to get input in any format\n",
         # get user input for month (all, january, february, ... , june)\n",
     month = input('Which month? January, February, March, April, May, or June?\n').lower()
-         #lower is used to get input in any format\n",
+         # lower is used to get input in any format\n",
     while(True):
             if(month == 'january' or month == 'february' or month == 'march' or month == 'april' or month == 'may' or month == 'june' or month == 'all'):
                 break
@@ -38,19 +38,19 @@ def get_filters():
                 month = input('Enter valid month\n>').lower()
         # get user input for day of week (all, monday, tuesday, ... sunday)\n",
     day =  input('Which day ? monday, tuesday, wednesday, thursday, friday, saturday , sunday or all to display data of all days?\n>').lower()
-         #lower is used to get input in any format\n",
+         # lower is used to get input in any format\n",
     while(True):
-            
+
 
             if(day == 'monday' or day == 'tuesday' or day == 'wednesday' or day == 'thursday' or day == 'friday' or day == 'saturday' or day == 'sunday' or day == 'all'):
                 break
             else:
                 day = input('Enter Correct day:\n>').lower()
-                 #lower is used to get input in any format\n",
-    
+                 # lower is used to get input in any format\n",
 
-        #return day\n",
-        
+
+        # return day\n",
+
 
     print('-'*40)
     return city, month, day
@@ -65,30 +65,30 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-   
+
 
     df = pd.read_csv(CITY_DATA[city])
 
-   
+
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
-  
+
 
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
 
-   
+
 
     if month != 'all':
         month =  MONTHS.index(month) + 1
         df = df[ df['month'] == month ]
 
-    
+
 
     if day != 'all':
-        
+
 
         df = df[ df['day_of_week'] == day.title()]
 
@@ -120,7 +120,7 @@ def station_stats(df):
     most_start_end_station = df[['Start Station', 'End Station']].mode().loc[0]
     print("The most used start and end station: {}, {}"\
             .format(most_start_end_station[0], most_start_end_station[1]))
-    
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -135,12 +135,11 @@ def trip_duration_stats(df):
     # TO DO: display mean travel time
     mean_travel_time= df['Trip Duration'].mean()
     print("Mean travel time:", mean_travel_time)
-    
-
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+
 def user_stats(df):
     """Displays statistics on bikeshare users."""
     print('\nCalculating User Stats...\n')
@@ -151,7 +150,7 @@ def user_stats(df):
 
     for index, user_count in enumerate(user_counts):
         print("  {}: {}".format(user_counts.index[index], user_count))
-    
+
 
     print()
 
@@ -162,7 +161,7 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 
     # TO DO: Display counts of gender
 def user_stats_gender(df):
@@ -172,13 +171,13 @@ def user_stats_gender(df):
 
     for index,gender_count   in enumerate(gender_counts):
         print("  {}: {}".format(gender_counts.index[index], gender_count))
-    
+
 
     print()
 
 
-    
-    
+
+
 
 
 def user_stats_birth(df, start_time):
@@ -193,7 +192,7 @@ def user_stats_birth(df, start_time):
 
     earliest_year = birth_year.min()
     print("The most earliest birth year:", earliest_year)
-  
+
 
 
 
@@ -202,7 +201,7 @@ def user_stats_birth(df, start_time):
 def table_stats(df, city):
     """Displays statistics on bikeshare users."""
     print('\nCalculating Dataset Stats...\n')
-    
+
 
     # counts the number of missing values in the entire dataset
     number_of_missing_values = np.count_nonzero(df.isnull())
@@ -210,8 +209,8 @@ def table_stats(df, city):
 
     # counts the number of missing values in the User Type column
     number_of_nonzero = np.count_nonzero(df['User Type'].isnull())
-    print("The number of missing values in the \'User Type\' column: {}".format(number_of_missing_values))    
-    
+    print("The number of missing values in the \'User Type\' column: {}".format(number_of_missing_values))
+
     print("The number of missing values in the \'User Type\' column: {}".format(number_of_missing_values))
 
 
@@ -244,7 +243,7 @@ def main():
                 break
             display_raw_data(df)
             break
-    
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
